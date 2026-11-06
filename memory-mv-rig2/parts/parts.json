@@ -1,0 +1,132 @@
+{
+ "figure": {
+  "origin_sheet": [
+   29.75,
+   59.5
+  ],
+  "size": [
+   1261,
+   3382
+  ]
+ },
+ "arm_upper_L": {
+  "origin_sheet": [
+   700.0,
+   597.25
+  ],
+  "size": [
+   236,
+   539
+  ]
+ },
+ "arm_upper_R": {
+  "origin_sheet": [
+   786.25,
+   597.25
+  ],
+  "size": [
+   242,
+   539
+  ]
+ },
+ "fore_L": {
+  "origin_sheet": [
+   878.5,
+   602.0
+  ],
+  "size": [
+   169,
+   529
+  ]
+ },
+ "fore_R": {
+  "origin_sheet": [
+   958.0,
+   601.25
+  ],
+  "size": [
+   195,
+   530
+  ]
+ },
+ "hand_relax": {
+  "origin_sheet": [
+   1077.5,
+   587.25
+  ],
+  "size": [
+   172,
+   211
+  ]
+ },
+ "hand_open": {
+  "origin_sheet": [
+   1158.75,
+   581.25
+  ],
+  "size": [
+   245,
+   236
+  ]
+ },
+ "hand_point": {
+  "origin_sheet": [
+   1253.25,
+   581.75
+  ],
+  "size": [
+   219,
+   253
+  ]
+ },
+ "hand_hold": {
+  "origin_sheet": [
+   1339.5,
+   588.75
+  ],
+  "size": [
+   222,
+   225
+  ]
+ },
+ "eye_closed_L": {
+  "origin_sheet": [
+   739.5,
+   465.75
+  ],
+  "size": [
+   394,
+   120
+  ]
+ },
+ "eye_closed_R": {
+  "origin_sheet": [
+   885.25,
+   465.25
+  ],
+  "size": [
+   419,
+   139
+  ]
+ },
+ "mouth_smile": {
+  "origin_sheet": [
+   1085.0,
+   464.25
+  ],
+  "size": [
+   288,
+   103
+  ]
+ },
+ "mouth_open": {
+  "origin_sheet": [
+   1201.25,
+   453.25
+  ],
+  "size": [
+   279,
+   179
+  ]
+ }
+}

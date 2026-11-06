@@ -1,0 +1,5 @@
+src/
+parts/*.png
+test/
+preview/pose_*.png
+*.mp4
