@@ -1,4 +1,9 @@
 test/*.mp4
 test/*.wav
 test/stills/
+full_stills/
+out/
+plates/*.png
+plates/src/
+plates/up.log
 *.mp4
