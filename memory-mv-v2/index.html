@@ -1,0 +1,12 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>把回忆拼好给你 V2 test</title>
+<link rel="stylesheet" href="fonts.css">
+<style>html,body{margin:0;background:#000;overflow:hidden}canvas{display:block}</style></head>
+<body><canvas id="c"></canvas>
+<script type="module">
+import { init, frame, loadAssets, DUR } from './js/shot.js';
+const cv = document.getElementById('c'); cv.width = innerWidth; cv.height = innerHeight;
+init(cv.getContext('2d'), innerWidth, innerHeight);
+window.DUR = DUR; window.render = t => frame(t); window.TEXTS = () => [];
+(async () => { await document.fonts.ready; await document.fonts.load('48px LyricZh', '将快乐全都收集你对我说的情话'); await loadAssets(); window.READY = true; })();
+</script></body></html>
