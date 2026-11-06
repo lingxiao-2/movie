@@ -4,3 +4,8 @@ preview/
 *.png
 *.jpg
 *.mp4
+out/
+stills/
+layers/
+up/
+assets
