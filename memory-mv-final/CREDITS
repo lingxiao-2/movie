@@ -1,0 +1,6 @@
+把回忆拼好给你 · DJ 版 — 正式版 · Credits
+
+用户提供（版权与使用责任归用户）：八幕插画、角色设定图、DJ 原曲音频、歌词文本、真人参考照片。
+字体（SIL OFL 1.1，Google Fonts 子集）：Noto Serif SC（歌词、日期）、Ma Shan Zheng（片尾手写）。
+模型与工具：Real-ESRGAN RealESRGAN_x4plus_anime_6B（BSD-3-Clause）、rembg + isnet-anime / isnet-general-use（MIT / Apache-2.0）、
+OpenCV（Apache-2.0）、Lemo-Opuscar 渲染与合成工具（MIT）、FFmpeg。
