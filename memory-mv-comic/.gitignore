@@ -7,3 +7,10 @@ plates/*.png
 plates/src/
 plates/up.log
 *.mp4
+s5/*.wav
+s5/assets
+s5/fonts
+s5/stage5
+s5/stills/
+stage5/
+第五幕_关键帧_*.jpg
