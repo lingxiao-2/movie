@@ -1,0 +1,324 @@
+{
+ "units": "px of the 4x-upscaled parts sheet",
+ "joints": {
+  "neck": "head",
+  "shoulder_R": "uparm_r",
+  "elbow_R": "fore_r",
+  "wrist_R": "hand_r",
+  "shoulder_L": "uparm_l",
+  "elbow_L": "fore_l",
+  "wrist_L": "hand_l",
+  "hip_R": "thigh_r",
+  "knee_R": "shin_r",
+  "ankle_R": "shoe_r",
+  "hip_L": "thigh_l",
+  "knee_L": "shin_l",
+  "ankle_L": "shoe_l"
+ },
+ "parts": {
+  "hip": {
+   "image": null,
+   "scale": 1,
+   "pivot": [
+    0,
+    0
+   ],
+   "parent": null,
+   "joint": [
+    0,
+    -560
+   ],
+   "rest_rotation_deg": 0,
+   "z": 0,
+   "mirrored": false
+  },
+  "thigh_r": {
+   "image": "m_thigh_R",
+   "scale": 1.05,
+   "pivot": [
+    77,
+    10
+   ],
+   "parent": "hip",
+   "joint": [
+    -66,
+    -6
+   ],
+   "rest_rotation_deg": 0,
+   "z": 4,
+   "mirrored": false
+  },
+  "shin_r": {
+   "image": "m_shin_R",
+   "scale": 0.92,
+   "pivot": [
+    62,
+    10
+   ],
+   "parent": "thigh_r",
+   "joint": [
+    0,
+    238
+   ],
+   "rest_rotation_deg": 0,
+   "z": 5,
+   "mirrored": false
+  },
+  "shoe_r": {
+   "image": "m_shoe_white_R",
+   "scale": 0.78,
+   "pivot": [
+    94,
+    36
+   ],
+   "parent": "shin_r",
+   "joint": [
+    -4,
+    198
+   ],
+   "rest_rotation_deg": 0,
+   "z": 6,
+   "mirrored": false
+  },
+  "thigh_l": {
+   "image": "m_thigh_L",
+   "scale": 1.05,
+   "pivot": [
+    70,
+    10
+   ],
+   "parent": "hip",
+   "joint": [
+    66,
+    -6
+   ],
+   "rest_rotation_deg": 0,
+   "z": 4,
+   "mirrored": false
+  },
+  "shin_l": {
+   "image": "m_shin_L",
+   "scale": 0.92,
+   "pivot": [
+    64,
+    10
+   ],
+   "parent": "thigh_l",
+   "joint": [
+    0,
+    238
+   ],
+   "rest_rotation_deg": 0,
+   "z": 5,
+   "mirrored": false
+  },
+  "shoe_l": {
+   "image": "m_shoe_white_L",
+   "scale": 0.78,
+   "pivot": [
+    100,
+    36
+   ],
+   "parent": "shin_l",
+   "joint": [
+    4,
+    198
+   ],
+   "rest_rotation_deg": 0,
+   "z": 6,
+   "mirrored": false
+  },
+  "lower": {
+   "image": "m_lower_dark",
+   "scale": 1.22,
+   "pivot": [
+    136,
+    4
+   ],
+   "parent": "hip",
+   "joint": [
+    0,
+    -52
+   ],
+   "rest_rotation_deg": 0,
+   "z": 7,
+   "mirrored": false
+  },
+  "torso": {
+   "image": "m_torso_tee",
+   "scale": 1.12,
+   "pivot": [
+    213,
+    292
+   ],
+   "parent": "hip",
+   "joint": [
+    0,
+    -14
+   ],
+   "rest_rotation_deg": 0,
+   "z": 8,
+   "mirrored": false
+  },
+  "head": {
+   "image": "m_head_base",
+   "scale": 1,
+   "pivot": [
+    205,
+    428
+   ],
+   "parent": "torso",
+   "joint": [
+    0,
+    -300
+   ],
+   "rest_rotation_deg": 0,
+   "z": 11,
+   "mirrored": false
+  },
+  "hair_back": {
+   "image": "m_hair_back",
+   "scale": 1.04,
+   "pivot": [
+    260,
+    228
+   ],
+   "parent": "head",
+   "joint": [
+    0,
+    -238
+   ],
+   "rest_rotation_deg": 0,
+   "z": 1,
+   "mirrored": false
+  },
+  "hair_front": {
+   "image": "m_hair_front",
+   "scale": 1,
+   "pivot": [
+    230,
+    200
+   ],
+   "parent": "head",
+   "joint": [
+    6,
+    -372
+   ],
+   "rest_rotation_deg": 0,
+   "z": 14,
+   "mirrored": false
+  },
+  "glasses": {
+   "image": "m_glasses",
+   "scale": 0.96,
+   "pivot": [
+    222,
+    64
+   ],
+   "parent": "head",
+   "joint": [
+    0,
+    -150
+   ],
+   "rest_rotation_deg": 0,
+   "z": 15,
+   "mirrored": false
+  },
+  "uparm_r": {
+   "image": "m_arm_upper_v",
+   "scale": 1,
+   "pivot": [
+    44,
+    22
+   ],
+   "parent": "torso",
+   "joint": [
+    -150,
+    -222
+   ],
+   "rest_rotation_deg": 12,
+   "z": 2,
+   "mirrored": false
+  },
+  "fore_r": {
+   "image": "m_arm_fore_v",
+   "scale": 1,
+   "pivot": [
+    43,
+    20
+   ],
+   "parent": "uparm_r",
+   "joint": [
+    0,
+    176
+   ],
+   "rest_rotation_deg": 0,
+   "z": 3,
+   "mirrored": false
+  },
+  "hand_r": {
+   "image": "m_hand_relax",
+   "scale": 0.66,
+   "pivot": [
+    26,
+    92
+   ],
+   "parent": "fore_r",
+   "joint": [
+    0,
+    168
+   ],
+   "rest_rotation_deg": 96,
+   "z": 9,
+   "mirrored": false
+  },
+  "uparm_l": {
+   "image": "m_arm_upper_v",
+   "scale": 1,
+   "pivot": [
+    44,
+    22
+   ],
+   "parent": "torso",
+   "joint": [
+    150,
+    -222
+   ],
+   "rest_rotation_deg": -12,
+   "z": 2,
+   "mirrored": false
+  },
+  "fore_l": {
+   "image": "m_arm_fore_v",
+   "scale": 1,
+   "pivot": [
+    43,
+    20
+   ],
+   "parent": "uparm_l",
+   "joint": [
+    0,
+    176
+   ],
+   "rest_rotation_deg": 0,
+   "z": 3,
+   "mirrored": false
+  },
+  "hand_l": {
+   "image": "m_hand_relax",
+   "scale": 0.66,
+   "pivot": [
+    26,
+    92
+   ],
+   "parent": "fore_l",
+   "joint": [
+    0,
+    168
+   ],
+   "rest_rotation_deg": -90,
+   "z": 9,
+   "mirrored": true
+  }
+ }
+}

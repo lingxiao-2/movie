@@ -1,0 +1,5 @@
+src/
+parts/*.png
+test/
+preview/t_*.jpg
+*.mp4

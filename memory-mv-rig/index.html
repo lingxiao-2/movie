@@ -1,0 +1,24 @@
+<!doctype html><html><head><meta charset="utf-8"><title>男主动作测试</title>
+<style>html,body{margin:0;background:#000;overflow:hidden}canvas{display:block}</style></head><body><canvas id="c"></canvas>
+<script type="module">
+import { MALE, loadPuppet, drawPuppet, withOutline, pose, swaps, blink } from './js/test.js';
+const cv = document.getElementById('c'), W = cv.width = innerWidth, H = cv.height = innerHeight, g = cv.getContext('2d');
+const Q = new URLSearchParams(location.search), dbg = Q.get('joints');
+window.DUR = 5;
+let bg;
+function background() {
+  bg = document.createElement('canvas'); bg.width = W; bg.height = H; const b = bg.getContext('2d');
+  const gr = b.createLinearGradient(0, 0, 0, H); gr.addColorStop(0, '#f6eadf'); gr.addColorStop(1, '#efe0d2'); b.fillStyle = gr; b.fillRect(0, 0, W, H);
+  b.globalAlpha = .05; for (let i = 0; i < 4000; i++) { b.fillStyle = i % 2 ? '#8a6a5a' : '#fff'; b.fillRect((i * 9301 % 997) / 997 * W, (i * 4919 % 991) / 991 * H, 2, 2); } b.globalAlpha = 1;
+}
+window.render = t => {
+  g.setTransform(1, 0, 0, 1, 0, 0); g.drawImage(bg, 0, 0);
+  const S = H / 1480, ox = W / 2, oy = H - 90;
+  // soft contact shadow
+  g.fillStyle = 'rgba(90,60,50,.18)'; g.beginPath(); g.ellipse(ox, oy, 230 * S, 26 * S, 0, 0, 7); g.filter = 'blur(6px)'; g.fill(); g.filter = 'none';
+  g.setTransform(S, 0, 0, S, ox, oy);
+  withOutline(g, W, H, cg => drawPuppet(cg, MALE, pose(t), swaps(t), blink(t)), 6);
+  if (dbg) { g.setTransform(S, 0, 0, S, ox, oy); g.fillStyle = 'red'; }
+};
+(async () => { background(); await loadPuppet(MALE); window.READY = true; })();
+</script></body></html>
