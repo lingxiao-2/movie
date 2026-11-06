@@ -1,0 +1,4 @@
+test/*.mp4
+test/*.wav
+test/stills/
+*.mp4
