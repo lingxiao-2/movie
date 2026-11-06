@@ -1,0 +1,20 @@
+把回忆拼好给你 · DJ 版 — 情侣纸艺回忆 MV · Credits and sources
+
+User-provided material (used with the user's permission, not redistributed in this repository):
+- Audio: 《把回忆拼好给你》DJ 版 MP3, supplied by the user (assets/song.mp3). Used unaltered in time;
+  loudness normalised to −14 LUFS for phone playback. Rights to the song belong to its owners.
+- Lyrics: supplied by the user for subtitles.
+- Photos: 2 of him, 2 of her, 1 riding photo (assets/ref/). Used as character references and as
+  pinned polaroids in Act 5.
+
+Fonts (SIL Open Font License 1.1, subsets downloaded from Google Fonts by tools/fetch_fonts.py):
+- ZCOOL KuaiLe — lyrics, titles
+- Ma Shan Zheng — the handwritten last line
+- Fredoka — calendar digits
+
+Tools: Lemo-Opuscar style library (MIT, github.com/lemomo-ai/lemo-opuscar) — style "Paper Pop-up Book",
+render/mux/subtitle tools in core/. Lyric timing measured with faster-whisper (MIT) using OpenAI Whisper
+models (MIT). Beat tracking with librosa (ISC).
+
+All pictures (characters, motorcycle, props, backdrops, desk) are drawn in code in js/; no stock images,
+no generated video. No third-party brands or logos appear in the film.

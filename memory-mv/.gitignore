@@ -1,0 +1,5 @@
+# personal photos, the song and rendered media stay local
+assets/
+out/
+stills/
+*.mp4
