@@ -28,5 +28,45 @@
   "src": "memory-mv-remotion/build/display/gate/bouquet.png",
   "md5": "e49f16776b56478fbb8e4bc4a36abf74",
   "bytes": 296505
+ },
+ "envelope/bg": {
+  "src": "memory-mv-book/up/bg_lace.png",
+  "md5": "b32c84517d796bc17c462ed0158a590e",
+  "bytes": 17139239
+ },
+ "envelope/cover": {
+  "src": "memory-mv-anniv/obj/cover_obj.png",
+  "md5": "0e806b13007c67e832ac6c1bb1ad0fc9",
+  "bytes": 3449620
+ },
+ "envelope/inner": {
+  "src": "memory-mv-remotion/build/envelope/inner_full.png",
+  "md5": "83881652c344dfd5e9314d57ba0791cd",
+  "bytes": 13415823
+ },
+ "envelope/lining": {
+  "src": "memory-mv-remotion/build/envelope/lining.png",
+  "md5": "5e3ca964d6d8466fb219a78cb8ad2076",
+  "bytes": 757639
+ },
+ "envelope/pocket": {
+  "src": "memory-mv-remotion/build/envelope/pocket.png",
+  "md5": "2730139fa4abc8dacd4eef9d341563cf",
+  "bytes": 759212
+ },
+ "envelope/flap_in": {
+  "src": "memory-mv-remotion/build/envelope/flap_in.png",
+  "md5": "6e999c426e8c83ea3e3b4ca40625e741",
+  "bytes": 319864
+ },
+ "envelope/flap_out": {
+  "src": "memory-mv-remotion/build/envelope/flap_out.png",
+  "md5": "5624405ac44c758562fefbc545ee5513",
+  "bytes": 226012
+ },
+ "envelope/bow": {
+  "src": "memory-mv-remotion/build/envelope/bow.png",
+  "md5": "fa635919ad6e34f66eb5fe0c4d634dce",
+  "bytes": 335223
  }
 }

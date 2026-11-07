@@ -47,5 +47,47 @@
    "master": "memory-mv-remotion/build/stands/bouquet.png",
    "display_scale": 0.375
   }
+ },
+ "envelope": {
+  "bg": {
+   "src": "memory-mv-book/up/bg_lace.png",
+   "kind": "page",
+   "from": "粉紫蕾丝水彩背景（与正片开场相同）"
+  },
+  "cover": {
+   "src": "memory-mv-anniv/obj/cover_obj.png",
+   "kind": "card",
+   "from": "定稿封面（含丝带和火漆），整张使用"
+  },
+  "inner": {
+   "src": "memory-mv-remotion/build/envelope/inner_full.png",
+   "kind": "page",
+   "derived_from": "memory-mv-card/layers/inner_page.png + pop_bike/couple/plaque/cats.png (stacked, = the approved inner page)"
+  },
+  "lining": {
+   "src": "memory-mv-remotion/build/envelope/lining.png",
+   "kind": "layer",
+   "derived_from": "memory-mv-book/cut/env_open.png"
+  },
+  "pocket": {
+   "src": "memory-mv-remotion/build/envelope/pocket.png",
+   "kind": "layer",
+   "derived_from": "memory-mv-book/cut/env_open.png"
+  },
+  "flap_in": {
+   "src": "memory-mv-remotion/build/envelope/flap_in.png",
+   "kind": "layer",
+   "derived_from": "memory-mv-book/cut/env_open.png"
+  },
+  "flap_out": {
+   "src": "memory-mv-remotion/build/envelope/flap_out.png",
+   "kind": "layer",
+   "derived_from": "memory-mv-book/cut/env_open.png (bottom fold, flipped)"
+  },
+  "bow": {
+   "src": "memory-mv-remotion/build/envelope/bow.png",
+   "kind": "layer",
+   "derived_from": "memory-mv-book/cut/env_closed.png"
+  }
  }
 }
