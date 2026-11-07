@@ -1,0 +1,4 @@
+films/*/renders/
+films/*/review/
+films/*/audio/
+__pycache__/
