@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "skills": {
+    "vibe-knowledge": {
+      "source": "andyhuo520/vibe-knowledge",
+      "sourceType": "github",
+      "skillPath": "skills/vibe-knowledge/SKILL.md",
+      "computedHash": "aa1deb6ac344a3040d61f64d7362b868f90a09cf2d157761e397af91c6a27ab2",
+      "installMode": "copy"
+    },
+    "vibe-knowledge-film": {
+      "source": "HeyChengC/vibe-knowledge-film",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "2ff58f6525492fd70d0633f07fc0058b6ac87bd2338fb98f28af75ea5edb9dc6",
+      "installMode": "copy"
+    },
+    "vibe-knowledge-video-skill": {
+      "source": "LuZhong-Li/vibe-knowledge-video-skill",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "dc3ccd3ead888125f90969e6f33861c1930ac009d7705eecf67974b3f76742a7",
+      "installMode": "copy"
+    }
+  }
+}
