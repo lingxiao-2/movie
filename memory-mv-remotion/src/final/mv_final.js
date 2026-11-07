@@ -383,7 +383,7 @@ function opening(g, sh, t) {
   if (t < OPEN[1] + .25) {
     // soft contact shadow of the card on the page, lifting with the cover
     const lift = st;
-    g.save(); g.globalAlpha = .4 * (1 - lift * .7); g.filter = `brightness(0) blur(${(10 + 30 * lift) * CK / 2.55}px)`;
+    g.save(); g.globalAlpha = .4 * (1 - lift * .7) * (1 - ss(seg(t, OPEN[1] - .1, OPEN[1] + .25))); g.filter = `brightness(0) blur(${(10 + 30 * lift) * CK / 2.55}px)`;
     g.drawImage(CI.cover, (10 + 40 * lift) * CK, (14 + 30 * lift) * CK, 1672 * CK, 941 * CK); g.restore(); g.filter = 'none';
     // the cover: ONE rigid board rotating about its left edge (perspective projection; the picture itself is never bent)
     const ax = [CBL[0] - CTL[0], CBL[1] - CTL[1]], al = Math.hypot(...ax), u = [ax[0] / al, ax[1] / al], n = [-u[1], u[0]];
