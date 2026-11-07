@@ -1,0 +1,1 @@
+{"compilerOptions":{"jsx":"react-jsx","module":"ESNext","moduleResolution":"bundler","target":"ES2022","strict":true,"noImplicitAny":false,"skipLibCheck":true,"allowJs":true,"resolveJsonModule":true},"include":["src"]}

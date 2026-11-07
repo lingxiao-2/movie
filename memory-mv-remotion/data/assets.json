@@ -1,0 +1,51 @@
+{
+ "_doc": "Every image the Remotion project may use. src = path relative to the repo root (never modified; linked into public/). hingeY = the stand's flat base (image px, bottom row of the paper); mirror = allowed to be shown mirrored (no text on it).",
+ "gate": {
+  "bg_gate": {
+   "src": "memory-mv-book/cut/v02/bg_gate.png",
+   "kind": "page",
+   "from": "V02 sheet 637c6e91 · 学校门口背景（无人物）"
+  },
+  "bg_mall": {
+   "src": "memory-mv-book/cut/v02/bg_mall.png",
+   "kind": "page",
+   "from": "V02 sheet 637c6e91 · 商场背景（无人物）"
+  },
+  "m_norm": {
+   "src": "memory-mv-remotion/build/display/gate/m_norm.png",
+   "kind": "stand",
+   "mirror": true,
+   "from": "V02 · 男主·常态",
+   "derived_from": "memory-mv-book/cut/v02/m_norm.png (alpha re-cut on the die-cut outline by scripts/recut_stands.py; RGB untouched)",
+   "master": "memory-mv-remotion/build/stands/m_norm.png",
+   "display_scale": 0.666
+  },
+  "m_surp": {
+   "src": "memory-mv-remotion/build/display/gate/m_surp.png",
+   "kind": "stand",
+   "mirror": false,
+   "from": "V02 · 男主·惊讶发呆",
+   "derived_from": "memory-mv-book/cut/v02/m_surp.png (alpha re-cut on the die-cut outline by scripts/recut_stands.py; RGB untouched)",
+   "master": "memory-mv-remotion/build/stands/m_surp.png",
+   "display_scale": 0.666
+  },
+  "f_norm": {
+   "src": "memory-mv-remotion/build/display/gate/f_norm.png",
+   "kind": "stand",
+   "mirror": true,
+   "from": "V02 · 女主·常态",
+   "derived_from": "memory-mv-book/cut/v02/f_norm.png (alpha re-cut on the die-cut outline by scripts/recut_stands.py; RGB untouched)",
+   "master": "memory-mv-remotion/build/stands/f_norm.png",
+   "display_scale": 0.666
+  },
+  "bouquet": {
+   "src": "memory-mv-remotion/build/display/gate/bouquet.png",
+   "kind": "stand",
+   "mirror": true,
+   "from": "V02 · 花束（独立）",
+   "derived_from": "memory-mv-book/cut/v02/bouquet.png (alpha re-cut on the die-cut outline by scripts/recut_stands.py; RGB untouched)",
+   "master": "memory-mv-remotion/build/stands/bouquet.png",
+   "display_scale": 0.375
+  }
+ }
+}

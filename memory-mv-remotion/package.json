@@ -1,0 +1,22 @@
+{
+  "name": "memory-mv-remotion",
+  "private": true,
+  "type": "module",
+  "description": "《把回忆拼好给你》Remotion 制作目录（渐进接入：旧 Canvas 引擎套壳 + CSS 3D 纸艺页面）",
+  "scripts": {
+    "assets": "node scripts/sync-assets.mjs",
+    "studio": "remotion studio src/index.ts",
+    "gate": "rm -f out/gate_video.mp4 && remotion render src/index.ts GatePage out/gate_video.mp4 --muted",
+    "legacy-check": "remotion render src/index.ts LegacyBook out/legacy_check --frames=0,96,250,400,620,700 --image-format=png"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.541",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "remotion": "4.0.541"
+  },
+  "devDependencies": {
+    "@types/react": "19.2.2",
+    "typescript": "5.9.3"
+  }
+}

@@ -1,0 +1,32 @@
+{
+ "gate/bg_gate": {
+  "src": "memory-mv-book/cut/v02/bg_gate.png",
+  "md5": "057025327739779885623fe407ff44f3",
+  "bytes": 6246254
+ },
+ "gate/bg_mall": {
+  "src": "memory-mv-book/cut/v02/bg_mall.png",
+  "md5": "c26e18e35eeb56b6d49575016417add8",
+  "bytes": 5357056
+ },
+ "gate/m_norm": {
+  "src": "memory-mv-remotion/build/display/gate/m_norm.png",
+  "md5": "9f95d393fdec7221cf4be51ca522a7a3",
+  "bytes": 530306
+ },
+ "gate/m_surp": {
+  "src": "memory-mv-remotion/build/display/gate/m_surp.png",
+  "md5": "87efb522b659ca914206980e777cd7c7",
+  "bytes": 521869
+ },
+ "gate/f_norm": {
+  "src": "memory-mv-remotion/build/display/gate/f_norm.png",
+  "md5": "bb0e774cd819100c291714f2bdab1024",
+  "bytes": 597106
+ },
+ "gate/bouquet": {
+  "src": "memory-mv-remotion/build/display/gate/bouquet.png",
+  "md5": "e49f16776b56478fbb8e4bc4a36abf74",
+  "bytes": 296505
+ }
+}
