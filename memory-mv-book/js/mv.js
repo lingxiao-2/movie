@@ -278,7 +278,7 @@ export function frame(t) {
     g.setTransform(1, 0, 0, 1, 0, 0); g.fillStyle = `rgba(30,12,30,${.25 * Math.sin(Math.PI * u)})`; g.fillRect(0, 0, W, H);
     pageFall(g, NB, u);
   } else drawShot(g, SHOTS[i], t);
-  lyric(g, t);
+  // lyrics intentionally not drawn (no subtitles)
   if (t > DUR - .6) { g.setTransform(1, 0, 0, 1, 0, 0); g.fillStyle = `rgba(20,10,22,${ss(seg(t, DUR - .6, DUR))})`; g.fillRect(0, 0, W, H); }
 }
 
