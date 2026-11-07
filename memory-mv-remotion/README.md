@@ -13,6 +13,13 @@
 - 渲染时使用 Remotion 自带的 chrome-headless-shell，首次运行会自动下载。
 - 图像预处理需要 Python 包：numpy、pillow、opencv-python-headless。
 
+## 正式版 V4.0（整支 MV）
+- 合成：`FinalMV`（59.04 s），引擎是 `src/final/mv_final.js`。
+  - 它派生自旧工程的 `book2.js`，旧文件本身没有改动。
+  - 镜头固定，完整原画加上局部元素动画，转场跟随剧情和歌曲。
+- 预处理：`python -I scripts/clean_plates.py <repo>`，擦掉地图上的「约1小时」，把蛋糕便签上的字擦空。
+- 渲染：`npm run final`（无声）；然后运行 `sh /root/lemo-opuscar/core/render/mux.sh out/final_video.mp4 <原曲> <成片>.mp4 24 0`。
+
 ## 构建步骤
 ```bash
 npm ci
@@ -35,4 +42,5 @@ npm run legacy-check                                # 第一步套壳：旧 Canv
 | `src/timeline.ts` | 节拍（实测 beats.json）与歌词时间轴 |
 | `data/assets.json` | 素材清单，含来源、母版、显示比例 |
 | `立体纸艺动画规范.md` | 动画规范 |
+| `src/final/` | 正式版 V4.0：`mv_final.js`（整片引擎）和 `FinalMV.tsx` |
 | `probe/` | 早先的 3 帧兼容性探针 |

@@ -7,6 +7,8 @@
     "assets": "node scripts/sync-assets.mjs",
     "studio": "remotion studio src/index.ts",
     "gate": "rm -f out/gate_video.mp4 && remotion render src/index.ts GatePage out/gate_video.mp4 --muted",
+    "final": "rm -f out/final_video.mp4 && remotion render src/index.ts FinalMV out/final_video.mp4 --muted",
+    "final-stills": "rm -rf out/fs && remotion render src/index.ts FinalMV out/fs --image-format=jpeg --frames=",
     "legacy-check": "remotion render src/index.ts LegacyBook out/legacy_check --frames=0,96,250,400,620,700 --image-format=png"
   },
   "dependencies": {

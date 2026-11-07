@@ -11,7 +11,10 @@ os.makedirs(DST, exist_ok=True); report = {}
 for k in ['m_norm', 'm_surp', 'f_norm', 'bouquet', 'pair', 'm_low', 'm_firm', 'rider']:
     a = np.array(Image.open(f'{SRC}/{k}.png').convert('RGBA')); rgb = a[..., :3].astype(int); a0 = a[..., 3]
     R, G, B = rgb[..., 0], rgb[..., 1], rgb[..., 2]; lum = (R * 3 + G * 6 + B) / 10
-    cool = ((B >= R - 3) & (lum > 165)) | ((B >= G + 2) & (lum > 140))   # sheet background / its mauve-lavender shadow
+    if k in ('m_low', 'm_firm'):   # these two have a mauve die-cut line and a cool white border: only the lighter halo outside it goes
+        cool = (B >= G + 2) & (lum > 195) & (lum < 250)
+    else:
+        cool = ((B >= R - 3) & (lum > 165)) | ((B >= G + 2) & (lum > 140))   # sheet background / its mauve-lavender shadow
     out0 = a0 < 24
     passable = (cool | out0).astype(np.uint8)
     n, lab = cv2.connectedComponents(passable, connectivity=4)
