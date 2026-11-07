@@ -25,15 +25,15 @@ const LYRICS = [
 export const SHOTS = [
   { id: 'open', t0: 0, t1: 8.2, custom: 'opening2' },
   { id: '1', t0: 8.2, t1: 15.2, custom: 'wechat', in: 'flip' },
-  { id: '2', t0: 15.2, t1: 18.9, p: 'act2_dorm', plate: 'cl_dorm', in: 'flip', lifts: [['act2_dorm', 'think', 15.75], ['lift', 'helmet', 17.25]], fx: { warm: .08 } },
-  { id: '3a', t0: 18.9, t1: 21.2, p: 'act3_ride', in: 'flip', lifts: [['act3_ride', 'think', 19.45]], fx: { ride: 1 } },
+  { id: '2', t0: 15.2, t1: 18.9, custom: 'stage', bg: 'bg_dorm', in: 'flip', fx: { warm: .08 } },
+  { id: '3a', t0: 18.9, t1: 21.2, custom: 'stage', bg: 'bg_ride', in: 'flip', fx: { ride: 1 } },
   { id: '3b', t0: 21.2, t1: 25.2, custom: 'map', in: 'flip' },
-  { id: '4a', t0: 25.2, t1: 28.0, p: 'act4_gate', in: 'flip', lifts: [['act4_gate', 'h1', 25.75], ['act4_gate', 'h2', 26.15], ['act4_gate', 'marks', 26.6]], fx: { snow: .5 } },
-  { id: '4b', t0: 28.0, t1: 31.4, p: 'act4_mall', in: 'flip', lifts: [['act4_mall', 'h1', 28.6], ['act4_mall', 'h2', 29.0]], fx: { bokeh: .8 } },
+  { id: '4a', t0: 25.2, t1: 28.0, custom: 'stage', bg: 'bg_gate', in: 'flip', fx: { snow: .5 } },
+  { id: '4b', t0: 28.0, t1: 31.4, custom: 'stage', bg: 'bg_mall', in: 'flip', fx: { bokeh: .8 } },
 ];
 
 // ------------------------------------------------------------------------------------------- loading
-const PLATES = ['act2_dorm', 'act3_ride', 'act3_map', 'act4_gate', 'act4_mall', 'act5_gift', 'act8_cake'];
+const PLATES = ['act3_map'];
 const POLS = ['study', 'night', 'city', 'weihai'];
 export async function load(w, h, g) {
   W = w; H = h; G = g; const mk = () => { const c = document.createElement('canvas'); c.width = W; c.height = H; return c; };
@@ -44,8 +44,9 @@ export async function load(w, h, g) {
     if (STK[p]) { IMG[p + '_clean'] = await im(`pc/cut/${p}_clean.png`); for (const n of Object.keys(STK[p])) IMG[p + '_' + n] = await im(`pc/cut/${p}_${n}.png`); }
   }));
   for (const n of Object.keys(PIECES)) IMG['pc_' + n] = await im(`cut/${n}.png`);
-  IMG.lace = await im('up/bg_lace.png'); IMG.cl_dorm = await im('cut/act2_dorm_clean2.png'); IMG.cl_map = await im('cut/act3_map_clean2.png');
+  IMG.lace = await im('up/bg_lace.png'); IMG.cl_map = await im('cut/act3_map_clean2.png');
   LIFT = await (await fetch('cut/lift.json')).json(); for (const pn of Object.keys(LIFT)) for (const n of Object.keys(LIFT[pn])) IMG[`lift_${n}`] = await im(`cut/lift_${pn}_${n}.png`);
+  for (const n of ['bg_gate', 'bg_mall', 'bg_dorm', 'bg_ride', 'm_norm', 'm_surp', 'f_norm', 'bouquet', 'pair', 'm_low', 'm_firm', 'rider']) IMG['v2_' + n] = await im(`cut/v02/${n}.png`);
   const L = { cover: 'anniv/obj/cover_obj.png', page: 'card/layers/inner_page.png', couple: 'card/layers/pop_couple.png', cats: 'card/layers/pop_cats.png', bike: 'card/layers/pop_bike.png', plaque: 'card/layers/pop_plaque.png' };
   await Promise.all(Object.entries(L).map(async ([k, s]) => { CI[k] = await im(s); }));
 }
@@ -94,15 +95,70 @@ function plateShot(g, sh, t) {
   tint(g, fx.warm || 0, fx.cool || 0);
 }
 // the ride page: street lamps pulse, warm light streams along the road, paper petals blow past (camera fixed)
-function rideFx(g, t) {
-  for (const [x, y, ph] of [[505, 117, 0], [1585, 333, 1.3], [1300, 405, 2.1]]) glow(g, x, y, 110, '255,214,150', .28 + .1 * Math.sin(t * 3 + ph));
-  g.save(); g.globalCompositeOperation = 'screen'; const R = mulberry(5);
-  for (let i = 0; i < 9; i++) { const y = 610 + R() * 180, l = 120 + R() * 160, x = ((R() * 2000 - t * 900) % 2000 + 2000) % 2000 - 200; const gr = g.createLinearGradient(x, 0, x + l, 0); gr.addColorStop(0, 'rgba(255,225,180,0)'); gr.addColorStop(1, 'rgba(255,225,180,.28)'); g.fillStyle = gr; g.fillRect(x, y, l, 2.5); }
-  g.restore();
+function rideFx(g, t, front) {
+  if (!front) {
+    for (const [x, y, ph] of [[590, 150, 0], [1630, 420, 1.3], [898, 146, 2.1]]) glow(g, x, y, 120, '255,214,150', .26 + .1 * Math.sin(t * 3 + ph));
+    g.save(); g.globalCompositeOperation = 'screen'; const R = mulberry(5);
+    for (let i = 0; i < 10; i++) { const y = 800 + R() * 130, l = 140 + R() * 180, x = ((R() * 2000 - t * 1100) % 2000 + 2000) % 2000 - 200; const gr = g.createLinearGradient(x + l, 0, x, 0); gr.addColorStop(0, 'rgba(255,225,180,0)'); gr.addColorStop(1, 'rgba(255,225,180,.3)'); g.fillStyle = gr; g.fillRect(x, y, l, 2.5); }
+    g.restore(); return;
+  }
   const P = mulberry(8); g.save();
-  for (let i = 0; i < 10; i++) { const z = .5 + P() * .6, x = ((P() * 1900 - t * 420 * z) % 1900 + 1900) % 1900 - 100, y = 500 + P() * 420 + Math.sin(t * 2 + i) * 20;
+  for (let i = 0; i < 10; i++) { const z = .5 + P() * .6, x = ((P() * 1900 - t * 420 * z) % 1900 + 1900) % 1900 - 100, y = 300 + P() * 560 + Math.sin(t * 2 + i) * 20;
     g.save(); g.translate(x, y); g.rotate(t * 2 * z + i); g.scale(1, .55 + .45 * Math.sin(t * 3 + i)); g.fillStyle = '#fffaf2'; g.beginPath(); g.ellipse(0, 0, 11 * z, 7 * z, 0, 0, 7); g.fill(); g.fillStyle = '#ffc3d0'; g.beginPath(); g.ellipse(0, 0, 9 * z, 5.5 * z, 0, 0, 7); g.fill(); g.restore(); }
   g.restore();
+}
+
+// ------------------------------------------------------------------------------------------- V02 stage pages
+// clean background page + independent paper stands (the user's V02 sheet). A stand is a rigid card hinged at its
+// flat base: it folds up from the page (projection of a rotation about the base, never stretched past full height),
+// may slide along the page, and folds back down before the page turns. Page coords: 1672 × 941.
+const CH = .58;                                    // all V02 character stands share one scale (sheet-consistent sizes)
+function standK(t, tin, tout) {
+  const a = (Math.PI / 2) * back(seg(t, tin, tin + .42), 1.5), up = Math.sin(Math.min(Math.max(a, 0), Math.PI)) * (a > Math.PI / 2 ? 1 : 1);
+  const down = 1 - eio(seg(t, tout, tout + .3)); return Math.max(0, Math.min(up, down));
+}
+function stand(g, n, cx, by, s, k, o = {}) {
+  if (k <= .01) return; const img = IMG['v2_' + n], w = img.width * s, h = img.height * s;
+  g.save(); g.globalAlpha = .38 * k; const gr = g.createRadialGradient(cx, by, 0, cx, by, w * .45); gr.addColorStop(0, 'rgba(50,20,45,.8)'); gr.addColorStop(1, 'rgba(50,20,45,0)');
+  g.translate(cx, by); g.scale(1, .07); g.fillStyle = gr; g.fillRect(-w * .5, -w * .5, w, w); g.restore();
+  g.save(); g.translate(cx, by); if (o.rot) g.rotate(o.rot * Math.PI / 180); g.scale(o.mir ? -1 : 1, k);
+  const lift = Math.max(0, 1 - k) * .6 + .4; g.shadowColor = `rgba(60,25,50,${.3 + .15 * lift})`; g.shadowBlur = 14 + 10 * lift; g.shadowOffsetY = 6;
+  g.drawImage(img, o.left ? 0 : -w / 2, -h, w, h); g.restore();
+  if (k < 1) { g.save(); g.globalCompositeOperation = 'multiply'; g.restore(); }
+}
+const BEAT = .418;
+function stageShot(g, sh, t) {
+  view(g, 836, 470.25, 1672); plateDraw(g, IMG['v2_' + sh.bg]);
+  const T = sh.t1 - .45, fx = sh.fx || {};
+  if (sh.id === '2') {                                   // dorm: low → decided; the white helmet comes up on the desk
+    const L = 1110 - IMG.v2_m_low.width * .66 / 2;
+    stand(g, 'm_low', L, 932, .66, standK(t, 15.5, 16.75), { left: 1 });
+    stand(g, 'm_firm', L, 932, .66, standK(t, 17.0, T), { left: 1 });
+    const hm = LIFT.act2_dorm.helmet, hs = 250 / hm.h, k = standK(t, 17.55, T);
+    if (k > .01) { g.save(); g.translate(540, 700); g.scale(1, k); g.shadowColor = 'rgba(60,25,50,.4)'; g.shadowBlur = 16; g.shadowOffsetY = 6; g.drawImage(IMG.lift_helmet, -hm.w * hs / 2, -hm.h * hs, hm.w * hs, hm.h * hs); g.restore(); }
+  }
+  if (sh.id === '3a') {                                  // night ride: the rider stand rides in, holds on the road, rides out
+    rideFx(g, t, 0);
+    const x = lerp(lerp(-420, 760, eo(seg(t, 18.95, 19.75))), 2150, ei(seg(t, 20.45, 21.05))), bob = Math.sin(t * 38) * 1.6 + Math.sin(t * 5.3) * 3;
+    stand(g, 'rider', x, 922 + bob, .56, 1, { rot: Math.sin(t * 4.1) * .6 });
+    rideFx(g, t, 1);
+  }
+  if (sh.id === '4a') {                                  // school gate: he waits, she arrives with the bouquet, he is stunned
+    const L = 520 - IMG.v2_m_norm.width * CH / 2;
+    stand(g, 'm_norm', L, 935, CH, standK(t, 25.4, 26.45), { left: 1 });
+    stand(g, 'm_surp', L, 935, CH, standK(t, 26.72, T), { left: 1 });
+    stand(g, 'f_norm', 1200, 935, CH, standK(t, 25.72, T), { mir: 1 });
+    const bx = lerp(1060, 930, eio(seg(t, 26.2, 26.75)));
+    stand(g, 'bouquet', bx, 935, .33, standK(t, 25.98, T), { rot: Math.sin(Math.PI * seg(t, 26.2, 26.75)) * -3 });
+  }
+  if (sh.id === '4b') {                                  // mall: side by side, walking in step with the beat (no hand-holding)
+    const u = seg(t, 28.3, 29.9), x = lerp(-320, 836, eo(u)), walking = u > 0 && u < 1 ? 1 - u * .5 : 0, ph = (t - 28.3) / BEAT;
+    stand(g, 'pair', x, 935 - Math.abs(Math.sin(Math.PI * ph)) * 12 * walking, .52, standK(t, 28.12, 30.75), { rot: Math.sin(Math.PI * ph) * 1.6 * walking });
+  }
+  g.setTransform(1, 0, 0, 1, 0, 0);
+  if (fx.snow) snow(g, t, fx.snow);
+  if (fx.bokeh) bokeh(g, t, fx.bokeh);
+  tint(g, fx.warm || 0, fx.cool || 0);
 }
 
 // ------------------------------------------------------------------------------------------- 3 · the map
@@ -220,7 +276,7 @@ function lyric(g, t) {
 
 // ------------------------------------------------------------------------------------------- frame
 // ---- frame: pages fall from the top edge (rigid page, perspective), lyrics on top
-const OP = { opening2, map: mapShot, wechat: wechatShot };
+const OP = { opening2, map: mapShot, wechat: wechatShot, stage: stageShot };
 function drawShot(g, sh, t) { g.setTransform(1, 0, 0, 1, 0, 0); g.globalAlpha = 1; g.filter = 'none'; g.fillStyle = '#2a1428'; g.fillRect(0, 0, W, H); if (sh.custom) OP[sh.custom](g, sh, t); else plateShot(g, sh, t); g.setTransform(1, 0, 0, 1, 0, 0); }
 const FL = .38;
 function pageFall(g, src, u) {

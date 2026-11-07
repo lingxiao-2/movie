@@ -1,0 +1,104 @@
+{
+ "m_norm": {
+  "size": [
+   846,
+   1068
+  ],
+  "flat_base": true
+ },
+ "m_surp": {
+  "size": [
+   937,
+   1052
+  ],
+  "flat_base": true
+ },
+ "f_norm": {
+  "size": [
+   1061,
+   1016
+  ],
+  "flat_base": true
+ },
+ "bouquet": {
+  "size": [
+   1266,
+   1096
+  ],
+  "flat_base": true
+ },
+ "pair": {
+  "size": [
+   1312,
+   951
+  ],
+  "flat_base": true
+ },
+ "m_low": {
+  "size": [
+   721,
+   892
+  ],
+  "flat_base": true
+ },
+ "m_firm": {
+  "size": [
+   778,
+   884
+  ],
+  "flat_base": true
+ },
+ "rider": {
+  "size": [
+   1137,
+   988
+  ],
+  "flat_base": true
+ },
+ "city": {
+  "size": [
+   1594,
+   358
+  ],
+  "flat_base": false
+ },
+ "road": {
+  "size": [
+   1438,
+   378
+  ],
+  "flat_base": false
+ },
+ "bg_gate": {
+  "src_box": [
+   67,
+   14,
+   533,
+   276
+  ]
+ },
+ "bg_mall": {
+  "src_box": [
+   54,
+   347,
+   456,
+   573
+  ]
+ },
+ "bg_dorm": {
+  "src_box": [
+   858,
+   350,
+   1254,
+   573
+  ]
+ },
+ "bg_ride": {
+  "src_box": [
+   38,
+   644,
+   454,
+   878
+  ]
+ }
+}

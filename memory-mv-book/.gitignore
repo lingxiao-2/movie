@@ -12,3 +12,4 @@ assets
 out/
 stills2/
 cut/*.png
+cut/v02/*.png
