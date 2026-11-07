@@ -12,7 +12,7 @@ REG = {
    'dots': (690, 780, 900, 920), 'bolt': (10, 0, 150, 120), 'anger': (1510, 10, 1660, 130), 'note': (10, 760, 440, 900), 'tape': (1170, 735, 1660, 900),
  },
  'sheet_polaroids': {f'pol{r}{c}': (10 + c * 412, 15 + r * 300, 422 + c * 412, 325 + r * 300) for r in range(3) for c in range(4)},
- 'sheet_parts': {'env_closed': (25, 30, 315, 300), 'env_open': (318, 30, 562, 300), 'night_stage': (1220, 0, 1630, 320)},
+ 'sheet_parts': {'env_closed': (25, 30, 315, 300), 'env_open': (318, 30, 562, 300), 'night_stage': (1220, 0, 1630, 320), 'couple_mem': (10, 315, 485, 550)},
 }
 out = {}
 for sheet, regs in REG.items():
