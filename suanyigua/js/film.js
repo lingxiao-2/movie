@@ -5,7 +5,7 @@
 import { seg, ss, eio, eo, clamp, lerp, mulberry, back } from '/core/lib.js';
 
 export const DUR = 170;
-let G, W, H, PAPER, BACKTEX;
+let G, W, H, PAPER, BACKTEX, OFF, OG;
 const C = { bg0: '#050510', bg1: '#12122a', white: '#EAEAF2', grey: '#8A8AA0', gold: '#C9A96A', paper: '#EDE4D3', ink: '#3b2f25', red: '#B53A2F' };
 const SANS = '"Noto Sans SC"', SERIF = '"Noto Serif SC"', GARA = '"EB Garamond"';
 const HANDLE = '@xiao ling';
@@ -52,7 +52,7 @@ export function FONTS() {
 
 // ---------------------------------------------------------------------------------------- setup
 export function load(g, w, h) {
-  G = g; W = w; H = h;
+  G = g; W = w; H = h; OFF = document.createElement('canvas'); OFF.width = w; OFF.height = h; OG = OFF.getContext('2d');
   PAPER = mk(512, 512, (p) => {                 // aged off-white paper: fibre noise + faint stains
     p.fillStyle = C.paper; p.fillRect(0, 0, 512, 512); const R = mulberry(4);
     for (let i = 0; i < 9000; i++) { const v = R(); p.fillStyle = `rgba(${v < .5 ? '120,95,60' : '255,250,240'},${.035 + R() * .05})`; p.fillRect(R() * 512, R() * 512, 1 + R() * 2, 1 + R() * 2); }
@@ -299,7 +299,7 @@ function revealScene(g, t) {
       if (flash > 0) glow(g, x, y, 40, '255,220,160', .5 * flash);
     }
     // counter, top right
-    const ca = ss(seg(t, T.grid + .8, T.grid + 1.4)); if (ca > 0) {
+    const ca = Math.min(ss(seg(t, T.grid + .8, T.grid + 1.4)), 1 - ss(seg(t, T.tricks - 1.4, T.tricks - .7))); if (ca > 0) {
       const n = Math.floor(Math.pow(clamp((t - T.grid - .8) / 6.5), 1.6) * 1284903 + (t > T.grid + .8 ? 1 : 0));
       g.save(); g.globalAlpha = ca; g.fillStyle = 'rgba(5,5,16,.75)'; rr(g, 1440, 96, 420, 120, 12); g.fill(); g.strokeStyle = 'rgba(201,169,106,.6)'; g.lineWidth = 1.5; g.stroke();
       g.textAlign = 'right'; g.textBaseline = 'middle'; g.fillStyle = C.grey; g.font = `700 22px ${SANS}`; g.fillText('同样的六句话 · 已发出', 1830, 128);
@@ -313,7 +313,7 @@ function gridToLine(g, t) {       // the grid flows back onto the rope as the si
   rope(g, t, ss(seg(t, T.tricks - .3, T.tricks + .4)));
   for (let r = 0; r < GR; r++) for (let c = 0; c < GC; c++) { const src = Math.floor(R() * 6), d = R() * .35; R(); if (u >= 1) continue;
     const sx = SLOT(src), sy = ropeY(sx) + 92, [gx, gy] = gridPos(c, r), k = eo(clamp((u - d * .5) / .7));
-    g.save(); g.globalAlpha = 1 - k; card(g, lerp(gx, sx, k), lerp(gy, sy, k), lerp(GW, MINI[0], k), lerp(GH, MINI[1], k), 0, 1, null, .2, .7); g.restore(); }
+    g.save(); g.globalAlpha = 1 - k; card(g, lerp(gx, sx, k), lerp(gy, sy, k), lerp(GW, MINI[0], k), lerp(GH, MINI[1], k), 0, 1, { kind: 'text', i: src, zh: '' }, .2, 1); g.restore(); }
 }
 function tricksScene(g, t) {      // each card comes back from the line and turns over: the trick behind it
   rope(g, t, 1);
@@ -338,9 +338,9 @@ function tricksScene(g, t) {      // each card comes back from the line and turn
 function forerScene(g, t) {       // the paper (illustrative reconstruction), then 39 students with the same sheet
   const t0 = T.forer, ap = Math.min(eo(seg(t, t0, t0 + .9)), 1), shrink = eio(seg(t, T.people - .5, T.people + .6));
   // rope and cards leave upwards
-  if (t < t0 + 1) { g.save(); g.translate(0, -260 * eio(seg(t, t0, t0 + 1))); rope(g, t, 1); for (let i = 0; i < 6; i++) hanging(g, t, i, { kind: 'rule', i, stamp: 0 }, 1, 1, 1); g.restore(); }
+  if (t < t0 + 1) { g.save(); g.globalAlpha = 1 - ss(seg(t, t0 + .3, t0 + 1)); g.translate(0, -380 * eio(seg(t, t0, t0 + 1))); rope(g, t, 1); for (let i = 0; i < 6; i++) hanging(g, t, i, { kind: 'rule', i, stamp: 0 }, 1, 1, 1); g.restore(); }
   const px = lerp(960, 330, shrink), py = lerp(520 + 300 * (1 - ap), 470, shrink), sc = lerp(1, .52, shrink), rot = lerp(-.035, -.07, shrink) + (1 - ap) * .1;
-  g.save(); g.translate(px, py); g.rotate(rot); g.scale(sc, sc); paper(g, t); g.restore();
+  g.save(); g.globalAlpha = ss(seg(t, t0, t0 + .6)); g.translate(px, py); g.rotate(rot); g.scale(sc, sc); paper(g, t); g.restore();
   if (t < T.people + .2) annotation(g, t, '图为示意：论文首页复原', t0 + 1.2, T.people - .1, 'Illustration, not the original page');
   if (t < T.people - .5) return;
   // 39 students
@@ -382,7 +382,7 @@ function paper(g, t) {            // aged journal first page (illustrative), cen
 function endScene(g, t) {         // the cards gather into one; it turns over: a small mirror
   const t0 = T.end, gather = eio(seg(t, t0, t0 + 3.6)), R = mulberry(41);
   // fade the students / paper out
-  if (t < t0 + 1) { g.save(); g.globalAlpha = 1 - seg(t, t0, t0 + 1); forerScene(g, Math.min(t, t0 - .01)); g.restore(); }
+  if (t < t0 + 1) { OG.setTransform(W / 1920, 0, 0, H / 1080, 0, 0); OG.clearRect(0, 0, 1920, 1080); forerScene(OG, Math.min(t, t0 - .01)); g.save(); g.setTransform(1, 0, 0, 1, 0, 0); g.globalAlpha = 1 - ss(seg(t, t0, t0 + 1)); g.drawImage(OFF, 0, 0); g.restore(); }
   if (gather < 1) for (let k = 0; k < 360; k++) {
     const ang = R() * Math.PI * 2, rad = 500 + R() * 700, sx = 960 + Math.cos(ang) * rad, sy = 540 + Math.sin(ang) * rad * .7, d = R() * .3;
     const u = eio(clamp((gather - d) / .7)), sp = (1 - u) * 1.5;
